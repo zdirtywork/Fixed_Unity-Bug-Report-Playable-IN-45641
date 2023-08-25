@@ -1,4 +1,19 @@
-# Unity-Bug-Report-Playable-IN-45641
+# [My Fault] Unity-Bug-Report-Playable-IN-45641
+
+**The issue doesn't come from Animator.angularVelocity but from calling the wrong function in my code.**
+
+> Resolution Notes: The issue doesn't come from Animator.angularVelocity but from calling the wrong function in the user code :
+> ```csharp
+> var rotationAngle = _animator.angularVelocity * Mathf.Rad2Deg * deltaTime;
+> transform.Rotate(rotationAngle, Space.World);
+> ```
+> 
+> This version of transform.Rotate() takes euler angles as parameters and not an axis and an angle. The user can fix the issue by using the appropriate function that takes an axis and an angle instead :
+> ```csharp
+> var deltaTime = Time.deltaTime / Time.timeScale; // Time.unscaledDeltaTime is not always accurate
+> var rotationAngle = _animator.angularVelocity * Mathf.Rad2Deg * deltaTime;
+> transform.Rotate(rotationAngle.normalized, rotationAngle.magnitude, Space.World);
+> ```
 
 ## About this issue
 
