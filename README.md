@@ -1,5 +1,7 @@
 # Unity-Bug-Report-Playable-IN-45641
 
+**Fixed in 2021.3.30f1, 2022.3.9f1, 2023.1.10f1, 2023.2.0b7, 2023.3.0a1.**
+
 ## About this issue
 
 When the `AnimationScriptPlayable` (asp) is output to an `AnimationLayerMixerPlayable` (_layerMixer) and the `singleLayerOptimization` parameter is set to false when creating the _layerMixer, modifying the alpha in the asp job (refer to the code in the "ModifyBoneTest.cs") does not take effect.
